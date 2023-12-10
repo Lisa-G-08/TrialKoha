@@ -9,25 +9,21 @@ function toggleMenu(contentID, clickedElement) {
     var activeItem = document.getElementById(contentID);
     var clickedText = document.getElementById(clickedElement);
 
-    // Hide the previously active content
     if (prevActiveItemID) {
         document.getElementById(prevActiveItemID).style.display = "none";
         document.getElementById(prevActiveTextID).style.color = "black";
-
     }
 
-    // Show the selected content
     activeItem.style.display = (activeItem.style.display === 'none' || activeItem.style.display === '') ? 'block' : 'none';
 
     if (activeItem.style.display === 'block') {
         clickedText.style.color = '#A5494D';
     }
 
-    // Update the previously active menu item
     prevActiveItemID = contentID;
     prevActiveTextID = clickedElement;
-
 }
+
 
 function toggleSignIn() {
     toggleMenu('signin', 'SignIn_txt');
@@ -41,6 +37,10 @@ function toggleViewProfile() {
 
 function toggleViewSchedule() {
     toggleMenu('ViewSchedule', 'ViewSchedule_txt');
+}
+
+function toggleAttendance() {
+    toggleMenu('PastAttendance', 'Attendance_txt');
 }
 
 function EditProfile(){

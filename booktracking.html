@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tracking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #ffffff;
+            overflow: scroll;
+        }
+
+        #navbar {
+            background-color: #A5494D;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        #logo {
+            max-height: 10%;
+            max-width: 6%;
+            float: left;
+        }
+
+        #bookDetails {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ddd;
+            border: 1px solid #A5494D;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #setOffAlarm {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #A5494D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a3c696c988.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Top Menu -->
+    <div id="navbar">
+        <img id="logo" src="OIP.jpeg" alt="School Logo">
+    </div>
+
+    <!-- Book Details -->
+    <div id="bookDetails">
+        <h2>Book Tracking Details</h2>
+        <p>RFID Tag: <span id="rfidTag">123456</span></p>
+        <p>ISBN: <span id="bookId">123456</span></p>
+        <p>Title: <span id="bookTitle">Sample Book</span></p>
+        <p>Author: <span id="author">John Doe</span></p>
+        <p>Publication Year: <span id="Year">Sample Book</span></p>
+        <p>Author: <span id="book_author">John Doe</span></p>
+
+        <!-- Set Off Alarm Button -->
+        <button id="setOffAlarm" onclick="setOffAlarm()">Set Alarm Off</button>
+    </div>
+
+    <script>
+        // JavaScript code for handling alarm
+        function setOffAlarm() {
+            // Add logic to handle alarm, e.g., close the alarm or take appropriate action
+            alert('Alarm set off! Taking appropriate action...');
+        }
+    </script>
+</body>
+
+</html>

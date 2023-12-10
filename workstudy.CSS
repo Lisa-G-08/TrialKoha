@@ -15,10 +15,12 @@ body {
 }
 
 #logo {
-  max-height: 10%; /* Adjust the max-height percentage as needed */
+  max-height: 10%;
   max-width: 6%;
+  width: auto; /* Make width auto for responsiveness */
   float: left;
 }
+
 
 #navbar a {
   color: white;
@@ -34,16 +36,16 @@ body {
 
 /* Style for the side navigation */
 #sidenav {
-  height: calc(100vh - 60px); /* Full height minus the height of the #navbar */
-  width: 200px;
+  height: calc(100vh); /* Adjusted to use percentage */
+  width: 15%; /* Adjusted to use percentage */
   position: fixed;
-  z-index: 0; /* Place the side navigation below #navbar */
-  top: 90px; /* Set the top position to the height of #navbar */
-  left: 20px;
-  background-color: #ffffff; /* White background color */
-  border-right: 2px solid black; /* Visible black border on the right side */
-  text-align:justify;
+  z-index: 0;
+  left: 2%;
+  background-color: #ffffff;
+  border-right: 2px solid black;
+  text-align: justify;
 }
+
 
 #sidenav a {
   padding: 15px 8px;
@@ -59,12 +61,15 @@ body {
 
 /* Style for the content area */
 #content {
-  margin-left: 220px; /* Adjust margin to accommodate the width of the side navigation */
+  margin-left: 17%; /* Adjusted to use percentage */
   padding: 16px;
 }
+
 .ViewProfile{
-      width: 600px;
+      width: 80%; /* Use a percentage width for responsiveness */
+      max-width: 600px; /* Set a maximum width to maintain a reasonable size on larger screens */
       margin: 50px auto;
+      margin-left:40%;
       background-color: #d9d9d9; /* Grey background color for the container */
       padding: 20px;
       border: 2px solid #999; /* Border color for the container */
@@ -73,24 +78,26 @@ body {
       display: flex;
       align-items: center; /* Center vertically within the container */
 }
+
 .profile {
       display: flex;
       align-items: flex-start; /* Align items to the start (top) within the profile div */
-    }
+}
 
-    .profile img {
+.profile img {
       border-radius: 50%;
       width: 200px;
       height: 200px;
       margin-right: 20px;
-    }
-    .separator {
+}
+
+.separator {
       border-left: 2px solid #999; /* Border color for the separator line */
       margin-right: 20px;
       height: 200px; /* Adjust height to match profile image */
-    }
+}
 
-    .info label {
+.info label {
       font-weight: bold;
       margin-bottom: 9px; /* Add space between different label-value pairs */
       display: inline-block; /* Ensure each label-value pair is on the same line */
@@ -123,22 +130,29 @@ body {
    display: inline-block;
 }
 
+@media only screen and (max-width: 768px) {
+  .ViewProfile {
+    width: 90%; /* Adjust the width for smaller screens */
+  }
+}
 
 #signin{
-  text-align: center;
   margin-top: 80px; /* Add margin to separate it from the upper menu */
+  margin-left:40%;
 }
 
-#codeSignIn{
-  padding: 10px;
-  width: 400px; /* Set a standard width for the input */
+#codeSignIn {
+  padding: 1em; /* Adjust padding using relative units */
+  width: 80%; /* Set width as a percentage of the parent container */
+  max-width: 400px; /* Set a maximum width to ensure it doesn't get too wide */
   box-sizing: border-box;
-  margin-bottom: 5px; /* Add a little space between the input and button */
+  margin-bottom: 1em; /* Adjust margin using relative units */
 }
 
-#signInButton{
-  padding: 10px;
-  width: 150px;
+#signInButton {
+  padding: 1em; /* Adjust padding using relative units */
+  width: 50%; /* Set width as a percentage of the parent container */
+  max-width: 150px; /* Set a maximum width to ensure it doesn't get too wide */
   background-color: #A5494D;
   color: white;
   border: none;
@@ -146,16 +160,13 @@ body {
   cursor: pointer;
 }
 
+
 #signinRules {
-  position: absolute; /* Enable absolute positioning within the container */
+  position:relative; /* Enable absolute positioning within the container */
   margin-top: 10px; /* Adjust as needed */
   font-size: small; /* Set font size to small */
-  top: 45%; /* Position from the top */
-  left: 47%; /* Position from the left */
-  transform: translate(-50%, -50%); /* Center the text within the container */
   font-size:small; /* Text font size */
   text-align: justify; /* Center-align the text */
-
 }
 
 #signinRules p {
@@ -170,40 +181,46 @@ body {
   color: #6c757d;
 }
 
-#signinRules ul{
-  list-style-type: disc; /* Set the list style to a filled circle */
-  padding: 0;
-  margin: 0;
-  color: #6c757d;
+@media only screen and (max-width: 768px) {
+  #signinRules {
+    left: 0;
+    transform: none;
+    text-align: left; /* Adjust text alignment for smaller screens */
+  }
 }
 
-#scheduleTable {
+#scheduleTable, #attendanceTable{
   width: 80%;
   margin: 20px auto;
+  margin-left:20%;
   border-collapse: collapse;
   border: 2px solid #A5494D;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-#scheduleTable th, #scheduleTable td {
+#scheduleTable th, #scheduleTable td, #attendanceTable th, #attendanceTable td{
   padding: 10px;
   border: 1px solid #ddd;
   text-align: center;
 }
 
-#scheduleTable th {
+#scheduleTable th, #attendanceTable th{
   background-color: #A5494D;
   color: white;
   font-weight: bold;
 }
 
-#scheduleTable tbody tr:nth-child(even) {
+#scheduleTable tbody tr:nth-child(even), #attendanceTable tbody tr:nth-child(even){
   background-color: #f9f9f9;
 }
 
-#scheduleTable tbody tr:hover {
+#scheduleTable tbody tr:hover, #attendanceTable tbody tr:hover{
   background-color: #ddd;
 }
 
-
+#PastAttendance h2 {
+    color:#A5494D;
+    text-align:center;
+    font-weight:bold;
+}

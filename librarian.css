@@ -1,21 +1,21 @@
 body {
   margin: 0;
   font-family: 'Times New Roman', sans-serif;
-  background-color: #ffffff; /* Set background color for the body */
+  background-color: #ffffff;
+  overflow: scroll;
 }
+
 #navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #A5494D;
-    padding: 10px;
-    text-align: center;
-    overflow: hidden;
-    z-index: 2; /* Set a higher z-index */
+  background-color: #A5494D;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  position: relative; /* Set position to relative to allow z-index to work */
+  z-index: 1; /* Stay on top of everything */
 }
 
 #logo {
-  max-height: 10%; /* Adjust the max-height percentage as needed */
+  max-height: 10%;
   max-width: 6%;
   float: left;
 }
@@ -32,17 +32,15 @@ body {
   color: black;
 }
 
-/* Style for the side navigation */
 #sidenav {
-    position: fixed;
-    top: 90px; /* Adjusted to match the height of the top navbar */
-    left: 20px;
-    height: calc(100vh - 70px);
-    width: 200px;
-    background-color: #ffffff;
-    border-right: 2px solid black;
-    text-align: justify;
-    z-index: 1; /* Set a lower z-index */
+  height: calc(100vh); /* Adjusted to use percentage */
+  width: 15%; /* Adjusted to use percentage */
+  position: fixed;
+  z-index: 0;
+  left: 2%;
+  background-color: #ffffff;
+  border-right: 2px solid black;
+  text-align: justify;
 }
 
 #sidenav a {
@@ -57,12 +55,12 @@ body {
   color: #A5494D;
 }
 
-/* Style for the content area */
 #content {
-  margin-left: 220px; /* Adjust margin to accommodate the width of the side navigation */
+  margin-left: 15%; /* Adjust margin to accommodate the width of the side navigation */
   padding: 16px;
 }
 
+/* Rest of your existing styles remain unchanged */
 .ViewProfile{
       width: 600px;
       margin: 150px auto;
@@ -133,12 +131,12 @@ body {
   margin:160px auto;
   margin-left:30%;
   padding: 10px;
-  width: 500px; /* Set a standard width for the input */
+  width: 40%; /* Set a standard width for the input */
   box-sizing: border-box;
   margin-bottom: 5px; /* Add a little space between the input and button */
 }
 
-#CheckInButton{
+#CheckInButton, #FindBook{
   margin:5px;
   padding: 10px;
   width: 150px;
@@ -153,12 +151,12 @@ body {
   margin:160px auto;
   margin-left:30%;
   padding: 10px;
-  width: 500px; /* Set a standard width for the input */
+  width: 40%; /* Set a standard width for the input */
   box-sizing: border-box;
   margin-bottom: 5px; /* Add a little space between the input and button */
 }
 
-#CheckOutButton{
+#CheckOutButton, #SearchButton{
   margin:5px;
   padding: 10px;
   width: 150px;
@@ -201,7 +199,7 @@ body {
 /* Style for the form container */
 #formContainer{
     width: 40%;
-    margin: 120px auto;
+    margin: 50px auto;
     margin-left:35%;
     padding: 20px;
     background-color: #D3D3D3;
@@ -213,7 +211,6 @@ body {
 /* Style for the BookInfo form */
 #BookInfo, #WorkStudyForm, #ScheduleForm{
     text-align: center;
-    margin-top: 20px;
 }
 
 #BookInfo h2, #WorkStudyForm h2, #ScheduleForm h2{
@@ -257,7 +254,7 @@ body {
   margin:160px auto;
   margin-left:10%;
   padding: 10px;
-  width: 500px; /* Set a standard width for the input */
+  width: 40%; /* Set a standard width for the input */
   box-sizing: border-box;
   margin-bottom: 5px; /* Add a little space between the input and button */
 }
@@ -272,6 +269,8 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+
+
 
 #ScheduleManagement{
   text-align:center;
@@ -318,7 +317,7 @@ body {
 
 /* Style for the form container */
 #formContainer1, #ScheduleEditing{
-    width: 35%;
+    width: 20%;
     margin: 120px auto;
     margin-left:35%;
     padding: 20px;
@@ -328,9 +327,20 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#WorkStudyForm input, #ScheduleForm input,
+#SetCode{
+    width: 15%;
+    margin: 120px auto;
+    margin-left:35%;
+    padding: 20px;
+    background-color: #D3D3D3;
+    border: 2px solid #A5494D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#WorkStudyForm input, #ScheduleForm input, #SetCodeForm input,
 #WorkStudyForm select, #ScheduleForm select{
-    width: 400px;
+    width: 80%;
     padding: 6px; /* Adjusted padding */
     margin-top: 3px; /* Adjusted margin */
     margin-bottom: 8px; /* Adjusted margin */
@@ -339,21 +349,124 @@ body {
     border-radius: 4px;
 }
 
+#SetCodeForm input{
+  width: 90%; /* Adjusted width for responsiveness */
+  padding: 3px; /* Adjusted padding */
+  margin-top: 2px; /* Adjusted margin */
+  margin-bottom: 4px; /* Adjusted margin */
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+}
+
 #WorkStudyForm button, #ScheduleForm button,
 #CancelAction, #CancelEdit{
+    margin-left:10%;
     margin-top:10px;
     background-color: #A5494D;
     color: white;
     padding: 8px 40px; /* Adjusted padding */
-    margin-right: 5px; /* Adjusted margin */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     display: inline-block;
 }
 
-#WorkStudyForm button:hover
+#SetCodeForm button,
+#CancelCode{
+    margin-left:10%;
+    margin-top:10px;
+    background-color: #A5494D;
+    color: white;
+    padding: 8px 40px; /* Adjusted padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#WorkStudyForm button:hover, #SetCodeForm button:hover,
 #ScheduleForm button:hover{
     background-color: #823e3e;
 }
 
+.icon-container {
+   margin-right:50%;
+   cursor: pointer;
+
+}
+
+#scheduleTable, #attendanceTable, #Catalog{
+  width: 80%;
+  margin: 20px auto;
+  margin-left:20%;
+  border-collapse: collapse;
+  border: 2px solid #A5494D;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#scheduleTable th, #scheduleTable td, #attendanceTable th, #attendanceTable td, #Catalog td, #Catalog th{
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#scheduleTable th, #attendanceTable th, #Catalog th{
+  background-color: #A5494D;
+  color: white;
+  font-weight: bold;
+}
+
+#scheduleTable tbody tr:nth-child(even), #attendanceTable tbody tr:nth-child(even), #Catalog tbody tr:nth-child(even){
+  background-color: #f9f9f9;
+}
+
+#scheduleTable tbody tr:hover, #attendanceTable tbody tr:hover{
+  background-color: #ddd;
+}
+
+#PastAttendance h2 {
+    color:#A5494D;
+    text-align:center;
+    font-weight:bold;
+}
+
+.header-container{
+   margin-left:20%;
+   cursor: pointer;
+}
+
+.header-container1, .header-container2{
+   margin-right:56%;
+   cursor: pointer;
+
+}
+
+#SetCodeForm h2, #WorkStudyForm h2, #ScheduleForm h2{
+ color:#A5494D;
+ text-align:center;
+ font-weight:bold;
+}
+
+#BookInfoDisplayCheckOut, #BookInfoDisplayCheckIn{
+    width:20%;
+    text-align: center;
+    margin-top: 20px;
+    margin-left:40%;
+    padding: 20px;
+    background-color: #ddd;
+    border: 1px solid #A5494D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#BookInfoDisplayCheckOut p, #BookInfoDisplayCheckIn p {
+    margin: 10px 0;
+}
+
+#BookInfoDisplayCheckOut strong, #BookInfoDisplayCheckIn strong{
+    font-weight: bold;
+    margin-right: 5px;
+}

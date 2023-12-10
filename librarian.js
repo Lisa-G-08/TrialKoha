@@ -9,24 +9,19 @@ function toggleMenu(contentID, clickedElement) {
     var activeItem = document.getElementById(contentID);
     var clickedText = document.getElementById(clickedElement);
 
-    // Hide the previously active content
     if (prevActiveItemID) {
         document.getElementById(prevActiveItemID).style.display = "none";
         document.getElementById(prevActiveTextID).style.color = "black";
-
     }
 
-    // Show the selected content
     activeItem.style.display = (activeItem.style.display === 'none' || activeItem.style.display === '') ? 'block' : 'none';
 
     if (activeItem.style.display === 'block') {
         clickedText.style.color = '#A5494D';
     }
 
-    // Update the previously active menu item
     prevActiveItemID = contentID;
     prevActiveTextID = clickedElement;
-
 }
 
 function toggleViewProfile() {
@@ -87,6 +82,7 @@ function EditSchedule() {
     document.getElementById("card6").style.display = "none";
     document.getElementById("card7").style.display = "none";
     document.getElementById("ScheduleEditing").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
 }
 
 function PreviousPage(event) {
@@ -96,6 +92,7 @@ function PreviousPage(event) {
     document.getElementById("card5").style.display = "inline-block";
     document.getElementById("card4").style.display = "inline-block";
     document.getElementById("ScheduleEditing").style.display = "none";
+    document.querySelector(".icon-container").style.display="block";
 }
 
 function BookSearch() {
@@ -103,6 +100,14 @@ function BookSearch() {
     document.getElementById("card1").style.display = "none";
     document.getElementById("BookEditor").style.display = "block";
 }
+
+function goBookManagement() {
+     document.getElementById("card").style.display = "block";
+    document.getElementById("card1").style.display = "block";
+    document.getElementById("BookEditor").style.display = "none";
+}
+
+
 
 function EditProfile(){
     var inputs = document.querySelectorAll('.editable[disabled]');
@@ -129,4 +134,68 @@ function Cancel(event) {
         input.setAttribute('disabled', 'disabled');
         input.style.border = '0';
       });
+}
+
+// librarian.js
+function goBack() {
+    document.getElementById("card2").style.display = "flex";
+    document.getElementById("card3").style.display = "flex";
+    document.getElementById("ScheduleManagement").style.display = "none";
+}
+
+function ViewSchedule() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("ViewSchedule").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+
+}
+
+function Attendance() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("PastAttendance").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+}
+
+
+function goScheduleManagement() {
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("ViewSchedule").style.display = "none";
+    document.querySelector(".header-container").style.display="block";
+}
+
+function goScheduleManagement1() {
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("PastAttendance").style.display = "none";
+    document.querySelector(".header-container1").style.display="block";
+}
+
+function AttendanceCode() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("SetCode").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+}
+
+function GoPrevious(event){
+    event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("SetCode").style.display = "none";
+    document.querySelector(".icon-container").style.display="block";
 }
