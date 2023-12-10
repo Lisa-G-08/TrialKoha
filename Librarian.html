@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ashesi - Warren Library Admin</title>
+    <script src="https://kit.fontawesome.com/a3c696c988.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="librarian.css">
+</head>
+<body>
+<div id="navbar">
+    <img id="logo" src="OIP.jpeg" alt="School Logo">
+  </div>
+
+  <!-- Side Navigation -->
+  <div id="sidenav">
+      <a href="#" id="Profile_txt" onclick ="toggleViewProfile()">
+          <i class="fas fa-user-alt"></i>
+          Profile
+      </a>
+
+      <a href="#" id="CheckIn_txt" onclick="toggleCheckIn()">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          Check In
+      </a>
+      <a href="#" id="CheckOut_txt" onclick="toggleCheckOut()">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        Check Out</a>
+      <a href="#" id="BookManagement_txt" onclick="toggleBookManagement()">
+      <i class="fa-solid fa-book"></i>
+      Book Management</a>
+      <a href="#" id="WorkStudy_txt" onclick="toggleWorkStudy()">
+      <i class="fa-solid fa-users"></i>
+      Work Study</a>
+      <a href="https://warrenlibraryseminarroom.simplybook.me/v2/" style="text-decoration:none">
+      <i class="fa-solid fa-house"></i>
+      Booking Room</a>
+       <a href="#" id="Notifications_txt" onclick="toggleNotifications()">
+     <i class="fa-solid fa-circle-exclamation"></i>
+      Book tracking</a>
+      <a href="#Log Out">
+      <i class="fas fa-power-off"></i>
+      Log Out</a>
+  </div>
+
+<!--Profile-->
+  <div id="ProfileViewing">
+  <div class="ViewProfile">
+  <div class="profile">
+    <img id="uploadImage" src="default-image.jpg" alt="Profile Picture">
+    <div class="separator"></div>
+  </div>
+  <div class="info">
+    <label>First Name:</label> <input type="text" id="fname" class="editable" value="John" disabled><br>
+    <label>Last Name:</label> <input type = "text" id="lname" class="editable" value="Doe" disabled><br>
+    <label>Staff ID:</label> <input type ="number" id="StaffID" class="editable" value="11112024" disabled><br>
+    <label>Email:</label> <input type="email" id="email" class="editable" value="john.doe@example.com" disabled><br>
+    <label>Phone:</label> <input type="tel" id="phone" class="editable" value="+1234567890" disabled><br>
+    <button id="EditProfile" onclick="EditProfile()">Edit Profile</button>
+    <button type="submit" id="SaveProfile" onclick="SaveProfile()" style="display: none;">Save Profile</button>
+    <button id="Cancel" onclick="Cancel(event)" style="display:none;"><i class="fa-solid fa-ban"></i> Cancel</button>
+  </div>
+</div>
+</div>
+
+<!-- Check In -->
+<div id="CheckIn" style="display:none">
+        <input type="text" id="CheckIn_" placeholder="Enter book title, author, or ID">
+        <button id="CheckInButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+</div>
+
+<!-- Check Out-->
+<div id="CheckOut" style="display:none">
+        <input type="text" id="CheckOut_" placeholder="Enter book title, author, ID, or student ID">
+        <button id="CheckOutButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+</div>
+
+<!-- Book management -->
+<div id="BookManagement" style="display:none">
+
+    <a href="#" onclick="EnterBookInfo()" style="text-decoration:none">
+     <div id="card" style="background-color:#556B2F">
+         <i class="fa-solid fa-pencil"></i>
+         <h3 style="color:#f1f1f1;">BOOK ENTRY PORTAL</h3>
+     </div>
+    </a>
+
+    <a href="#" onclick="BookSearch()" style="text-decoration:none">
+    <div id="card1" style="background-color:#B8860B">
+         <i class="fa-solid fa-file-pen"></i>
+         <h3 style="color:#f1f1f1;">LIBRARY CATALOG EDITOR</h3>
+     </div>
+    </a>
+
+    <div id="formContainer" style="display:none">
+        <form action="#" method="post" id="BookInfo" >
+            <h2>Book Info</h2>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title">
+
+            <label for="authors">Author(s):</label>
+            <input type="text" id="authors" name="authors">
+
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn">
+
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher">
+
+            <label for="publicationYear">Publication Year:</label>
+            <input type="number" id="publicationYear" name="publicationYear">
+
+            <label for="genre">Genre/Category:</label>
+            <input type="text" id="genre" name="genre">
+
+            <label for="edition">Edition:</label>
+            <input type="text" id="edition" name="edition">
+
+            <label for="borrowDays">Borrow Days:</label>
+            <input type="number" id="borrowDays" name="borrowDays">
+
+            <label for="availability">Availability:</label>
+            <select id="availability" name="availability">
+                <option value="available">Available</option>
+                <option value="checked-out">Checked Out</option>
+            </select><br><br>
+
+            <button type="submit">Submit</button>
+            <button id="CancelSave" onclick="CancelBookInfo(event)"><i class="fa-solid fa-ban"></i> Cancel</button>
+        <br>
+        <br>
+    </form>
+    </div>
+
+    <div id="BookEditor" style="display:none">
+        <input type="text" id="BookSearch" placeholder="Enter book title, author, or ID">
+        <button id="BookSearchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <!-- Need a back button to go to previous page-->
+</div>
+
+<!-- Work Study -->
+<div id="WorkStudy" style="display:none">
+
+    <!-- Main Menu info -->
+    <a href="#" onclick="StudentInfo()" style="text-decoration:none">
+        <div id="card2" style="background-color:#483D8B">
+            <i class="fa-solid fa-user-pen"></i>
+            <h3 style="color:#f1f1f1;">STUDENT MANAGEMENT</h3>
+        </div>
+    </a>
+
+    <a href="#" onclick="Schedule()" style="text-decoration:none">
+        <div id="card3" style="background-color:#A0522D">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <h3 style="color:#f1f1f1;">SCHEDULE MANAGEMENT</h3>
+        </div>
+    </a>
+
+    <!-- WorkStudy Schedule Management Menu --->
+    <div id="ScheduleManagement" style="display:none">
+
+        <!-- WorkStudy Schedule Management Main menu subsection 1 -->
+        <div>
+            <a href="#" onclick="EditSchedule()" style="text-decoration:none">
+                <div id="card4" style="background-color:#008B8B">
+                   <i class="fa-solid fa-file-pen"></i>
+                    <h3 style="color:#f1f1f1;">EDIT SCHEDULE</h3>
+                </div>
+            </a>
+
+            <a href="#" onclick="ViewSchedule()" style="text-decoration:none">
+                <div id="card5" style="background-color:#CD5C5C">
+                    <i class="fa-solid fa-eye"></i>
+                    <h3 style="color:#f1f1f1;">VIEW SCHEDULE</h3>
+                </div>
+            </a>
+        </div>
+
+        <!-- WorkStudy Schedule Management Main menu subsection 2 -->
+        <div>
+            <a href="#" onclick="Attendance()" style="text-decoration:none">
+                <div id="card6" style="background-color:#228B22">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                    <h3 style="color:#f1f1f1;">ATTENDANCE</h3>
+                </div>
+            </a>
+
+            <a href="#" onclick="AttendanceCode()" style="text-decoration:none">
+                <div id="card7" style="background-color:#808080">
+                    <i class="fa-solid fa-key"></i>
+                    <h3 style="color:#f1f1f1;">ATTENDANCE CODE</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Work Study account (de)activation -->
+    <div id="formContainer1" style="display:none">
+        <form action="#" method="post" id="WorkStudyForm">
+            <h2>Work Study Account Management</h2>
+            <label for="action">Action:</label>
+            <select id="action" name="action">
+                <option value="available">Activation</option>
+                <option value="checked-out">Deactivation</option>
+            </select><br><br>
+
+            <label for="StudentEmail">Student Email:</label>
+            <input type="email" id="StudentEmail" name="student email">
+
+            <button type="submit">Submit</button>
+            <button id="CancelAction" onclick="Action(event)"><i class="fa-solid fa-ban"></i> Cancel</button><br><br>
+        </form>
+    </div>
+
+    <!-- Work Study schedule editing -->
+    <div id="ScheduleEditing" style="display:none">
+        <form action="#" method="post" id="ScheduleForm">
+            <h2>Work Study Schedule</h2>
+            <label for="type">Shift Type:</label>
+            <select id="type" name="type">
+                <option value="available">Morning</option>
+                <option value="available">AfterNoon</option>
+                <option value="checked-out">Evening</option>
+            </select>
+
+            <label for="startTime">From:</label>
+            <input type="time" id="startTime" name="start_time" min="08:00" max="23:59">
+            <label for="endTime">To:</label>
+            <input type="time" id="endTime" name="end_time" min="08:00" max="23:59">
+
+            <label for="supervisor">Supervisor:</label>
+            <input type="text" id="supervisor" name="title">
+
+            <label for="emailInput">Student Email:</label>
+            <input type="email" id="emailInput" name="emailInput">
+
+            <button type="submit">Submit</button>
+            <button id="CancelEdit" onclick="PreviousPage(event)"><i class="fa-solid fa-ban"></i> Cancel</button><br><br>
+        </form>
+    </div>
+
+    <div id="SetCode" style="display:none">
+
+    </div>
+
+</div>
+
+
+<script src="librarian.js"></script>
+</body>
+</html>

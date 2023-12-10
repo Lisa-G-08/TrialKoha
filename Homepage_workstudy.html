@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashesi - Warren Library Work Study</title>
+  <script src="https://kit.fontawesome.com/a3c696c988.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="workstudy.css">
+</head>
+<body>
+
+  <div id="navbar">
+    <img id="logo" src="OIP.jpeg" alt="School Logo">
+  </div>
+
+  <!-- Side Navigation -->
+  <div id="sidenav">
+    <a href="#" id="Profile_txt" onclick ="toggleViewProfile()">
+      <i class="fas fa-user-alt"></i>
+      Profile</a>
+
+    <a href="#" id="SignIn_txt" onclick="toggleSignIn()">
+      <i class="fas fa-arrow-right-to-bracket"></i>
+      Sign In </a>
+
+    <a href="#Past Attendance">
+      <i class="fas fa-list-check"></i>
+      Past Attendance</a>
+
+    <a href="#" id="ViewSchedule_txt" onclick="toggleViewSchedule()">
+      <i class="fas fa-calendar"></i>
+      View Schedule</a>
+
+    <a href="#Log Out">
+      <i class="fas fa-power-off"></i>
+      Log Out</a>
+  </div>
+
+  <!--Profile-->
+  <div id="ProfileViewing">
+  <div class="ViewProfile">
+  <div class="profile">
+    <img id="uploadImage" src="default-image.jpg" alt="Profile Picture">
+    <div class="separator"></div>
+  </div>
+  <div class="info">
+    <label>First Name:</label> <input type="text" id="fname" class="editable" value="John" disabled><br>
+    <label>Last Name:</label> <input type = "text" id="lname" class="editable" value="Doe" disabled><br>
+    <label>Student ID:</label> <input type ="number" id="StudentID" class="editable" value="11112024" disabled><br>
+    <label>Class:</label> <input type ="number" id="class" class="editable" value="2024" min="2024" max="2027" disabled><br>
+    <label>Major:</label> <input type="text" id="major" class="editable" value="Computer Science" disabled><br>
+    <label>Email:</label> <input type="email" id="email" class="editable" value="john.doe@example.com" disabled><br>
+    <label>Phone:</label> <input type="tel" id="phone" class="editable" value="+1234567890" disabled><br>
+    <button id="EditProfile" onclick="EditProfile()">Edit Profile</button>
+    <button id="SaveProfile" onclick="SaveProfile()" style="display: none;">Save Profile</button>
+    <button id="Cancel" onclick="Cancel()" style="display:none;"><i class="fa-solid fa-ban"></i> Cancel</button>
+  </div>
+</div>
+</div>
+
+  <!-- Sign In-->
+  <div id="signin" style="display: none;">
+    <input type="text" id="codeSignIn" placeholder="Enter code">
+    <button id="signInButton">Sign In</button>
+    <!-- Additional content -->
+    <div id="signinRules">
+      <p>Only sign in under the following circumstances:</p>
+      <ul>
+        <li>You are physically present at the library: not on your way or you intend to be present</li>
+        <li>You are staying at the library until your shift ends</li>
+        <li>Honor code applies</li>
+        <li><strong style="color:red;">Do NOT share the CODE. This is considered a breach of work study contract.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!--- Past Attendance --->
+  <div id="PastAttendance" style="display: none;">
+
+  </div>
+
+  <!-- View Schedule --->
+<div id="ViewSchedule" style="display: none;">
+  <input type="date" id="date">
+  <table id="scheduleTable">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Supervisor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023-12-10</td>
+        <td>9:00 AM</td>
+        <td>12:00 PM</td>
+        <td>Victor Ibetto</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+</div>
+
+
+  <script src="workstudy.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickable Image for File Upload</title>
+  <!-- Add a link to a font-awesome CDN for icons -->
+  <script src="https://kit.fontawesome.com/a3c696c988.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <label for="fileInput">
+    <img id="uploadImage" src="default-image.jpg" alt="Click to upload or take a picture" style="cursor: pointer; position: relative;">
+    <!-- Add icons for capturing and uploading -->
+    <i id="cameraIcon" class="fa-solid fa-camera" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color:black ; cursor: pointer;"></i>
+    <i id="uploadIcon" class="fa-solid fa-upload" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color:black; cursor: pointer;"></i>
+  </label>
+
+  <input type="file" id="fileInput" style="display: none;" accept="image/*" capture="environment">
+
+  <script>
+    var uploadImage = document.getElementById('uploadImage');
+    var fileInput = document.getElementById('fileInput');
+    var cameraIcon = document.getElementById('cameraIcon');
+    var uploadIcon = document.getElementById('uploadIcon');
+
+    uploadImage.addEventListener('click', function() {
+      fileInput.click();
+    });
+
+    cameraIcon.addEventListener('click', function() {
+      // Trigger the file input when the camera icon is clicked
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function() {
+      var selectedFile = fileInput.files[0];
+
+      if (selectedFile) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          uploadImage.src = e.target.result;
+          toggleIcons(); // Show the upload icon after selecting a file
+        };
+
+        reader.readAsDataURL(selectedFile);
+      }
+    });
+
+    function toggleIcons() {
+      // Hide the camera icon and show the upload icon
+      cameraIcon.style.display = 'none';
+      uploadIcon.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
