@@ -5,7 +5,491 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashesi - Warren Library Admin</title>
     <script src="https://kit.fontawesome.com/a3c696c988.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="librarian.css">
+    <!-- CSS code -->
+    <style>
+        body {
+  margin: 0;
+  font-family: 'Times New Roman', sans-serif;
+  background-color: #ffffff;
+  overflow: scroll;
+}
+
+#navbar {
+  background-color: #A5494D;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#logo {
+  max-height: 10%;
+  max-width: 6%;
+  float: left;
+}
+
+#navbar a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#sidenav {
+  height: calc(100vh); /* Adjusted to use percentage */
+  width: 15%; /* Adjusted to use percentage */
+  position: fixed;
+  z-index: 0;
+  left: 2%;
+  top: 12%;
+  background-color: #ffffff;
+  border-right: 2px solid black;
+  text-align: justify;
+}
+
+#sidenav a {
+  padding: 15px 8px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block;
+}
+
+#sidenav a:hover {
+  color: #A5494D;
+}
+
+#content {
+  margin-left: 15%; /* Adjust margin to accommodate the width of the side navigation */
+  padding: 16px;
+}
+
+.ViewProfile{
+      width: 600px;
+      margin: 50px auto;
+      margin-top:10%;
+      background-color: #d9d9d9; /* Grey background color for the container */
+      padding: 20px;
+      border: 2px solid #999; /* Border color for the container */
+      border-radius: 8px; /* Border radius for rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+      display: flex;
+      align-items: center; /* Center vertically within the container */
+}
+
+.profile {
+      display: flex;
+      align-items: flex-start; /* Align items to the start (top) within the profile div */
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.separator {
+    border-left: 2px solid #999; /* Border color for the separator line */
+    margin-right: 20px;
+    height: 200px; /* Adjust height to match profile image */
+}
+
+.info label {
+    font-weight: bold;
+    margin-bottom: 9px; /* Add space between different label-value pairs */
+    display: inline-block; /* Ensure each label-value pair is on the same line */
+    width: 90px; /* Adjust the width as needed */
+}
+
+#fname, #lname, #StaffID, #email, #phone{
+    background-color:#d9d9d9;
+    border:0px;
+    font-size:16px;
+    font-family: Times New Roman;
+}
+
+#EditProfile{
+    width: 180px;
+    height:30px;
+    background-color: #A5494D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display:block;
+}
+
+#SaveProfile, #Cancel{
+    width: 150px;
+    height:30px;
+    background-color: #A5494D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#CheckIn_{
+  margin:50px auto;
+  margin-top:10%;
+  margin-left:30%;
+  padding: 10px;
+  width: 40%; /* Set a standard width for the input */
+  box-sizing: border-box;
+  margin-bottom: 5px; /* Add a little space between the input and button */
+}
+
+#CheckInButton, #FindBook{
+  margin:5px;
+  padding: 10px;
+  width: 150px;
+  background-color: #A5494D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#CheckOut_{
+  margin:50px auto;
+  margin-top:10%;
+  margin-left:30%;
+  padding: 10px;
+  width: 40%; /* Set a standard width for the input */
+  box-sizing: border-box;
+  margin-bottom: 5px; /* Add a little space between the input and button */
+}
+
+#CheckOutButton, #SearchButton{
+  margin:5px;
+  padding: 10px;
+  width: 150px;
+  background-color: #A5494D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#BookManagement{
+    text-align:center;
+    margin-top:10%;
+
+}
+/* Style the counter cards */
+#card, #card1, #card2, #card3 {
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    margin: 50px auto 20px; /* 120px space at the top, 20px space at the bottom */
+    background-color: #ddd;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#card1, #card3 {
+    margin-top: -2px; /* Adjusted negative margin */
+}
+
+#card i, #card1 i, #card2 i, #card3 i{
+    margin:20px;
+    margin-bottom:10px;
+    color:#f1f1f1;
+}
+
+/* Style for the form container */
+#formContainer{
+    width: 40%;
+    margin: 50px auto;
+    margin-left:35%;
+    padding: 20px;
+    background-color: #D3D3D3;
+    border: 2px solid #A5494D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the BookInfo form */
+#BookInfo, #WorkStudyForm, #ScheduleForm{
+    text-align: center;
+}
+
+#BookInfo h2, #WorkStudyForm h2, #ScheduleForm h2{
+    color: #A5494D;
+}
+
+#BookInfo label, #WorkStudyForm label, #ScheduleForm label{
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#BookInfo input,
+#BookInfo select {
+    width: 100%; /* Adjust width as needed */
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#BookInfo button, #CancelSave{
+    background-color: #A5494D;
+    color: white;
+    padding: 10px 80px;
+    margin-right:10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display:inline-block;
+}
+
+#BookInfo button:hover {
+    background-color: #823e3e;
+}
+
+#BookSearch{
+  margin:50px auto;
+  margin-left:10%;
+  padding: 10px;
+  width: 40%; /* Set a standard width for the input */
+  box-sizing: border-box;
+  margin-bottom: 5px; /* Add a little space between the input and button */
+}
+
+#BookSearchButton{
+  margin:5px;
+  padding: 10px;
+  width: 150px;
+  background-color: #A5494D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#WorkStudy{
+margin-top:10%;
+}
+
+#ScheduleManagement{
+  text-align:center;
+}
+#card4, #card5{
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    margin: 50px auto 20px; /* 120px space at the top, 20px space at the bottom */
+    background-color: #ddd;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#card6, #card7{
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    margin: 15px auto;/* 120px space at the top, 20px space at the bottom */
+    background-color: #ddd;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#card4, #card6{
+    margin-right: 30px; /* Adjusted negative margin */
+}
+
+#card4 i, #card5 i, #card6 i, #card7 i{
+    margin:20px;
+    margin-bottom:10px;
+    color:#f1f1f1;
+}
+
+/* Style for the form container */
+#formContainer1, #ScheduleEditing{
+    width: 20%;
+    margin: 50px auto;
+    margin-left:35%;
+    padding: 20px;
+    background-color: #D3D3D3;
+    border: 2px solid #A5494D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#SetCode{
+    width: 15%;
+    margin: 50px auto;
+    margin-left:35%;
+    padding: 20px;
+    background-color: #D3D3D3;
+    border: 2px solid #A5494D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#WorkStudyForm input, #ScheduleForm input, #SetCodeForm input,
+#WorkStudyForm select, #ScheduleForm select{
+    width: 80%;
+    padding: 6px; /* Adjusted padding */
+    margin-top: 3px; /* Adjusted margin */
+    margin-bottom: 8px; /* Adjusted margin */
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#SetCodeForm input{
+  width: 90%; /* Adjusted width for responsiveness */
+  padding: 3px; /* Adjusted padding */
+  margin-top: 2px; /* Adjusted margin */
+  margin-bottom: 4px; /* Adjusted margin */
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+}
+
+#WorkStudyForm button, #ScheduleForm button,
+#CancelAction, #CancelEdit{
+    margin-left:10%;
+    margin-top:10px;
+    background-color: #A5494D;
+    color: white;
+    padding: 8px 40px; /* Adjusted padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#SetCodeForm button,
+#CancelCode{
+    margin-left:10%;
+    margin-top:10px;
+    background-color: #A5494D;
+    color: white;
+    padding: 8px 40px; /* Adjusted padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#WorkStudyForm button:hover, #SetCodeForm button:hover,
+#ScheduleForm button:hover{
+    background-color: #823e3e;
+}
+
+.icon-container {
+   margin-right:50%;
+   cursor: pointer;
+
+}
+
+#scheduleTable, #attendanceTable, #Catalog{
+  width: 80%;
+  margin-top:10%;
+  margin: 20px auto;
+  margin-left:20%;
+  border-collapse: collapse;
+  border: 2px solid #A5494D;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#scheduleTable th, #scheduleTable td, #attendanceTable th, #attendanceTable td, #Catalog td, #Catalog th{
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+#scheduleTable th, #attendanceTable th, #Catalog th{
+  background-color: #A5494D;
+  color: white;
+  font-weight: bold;
+}
+
+#scheduleTable tbody tr:nth-child(even), #attendanceTable tbody tr:nth-child(even), #Catalog tbody tr:nth-child(even){
+  background-color: #f9f9f9;
+}
+
+#scheduleTable tbody tr:hover, #attendanceTable tbody tr:hover{
+  background-color: #ddd;
+}
+
+#PastAttendance h2 {
+    color:#A5494D;
+    text-align:center;
+    font-weight:bold;
+}
+
+.header-container{
+   margin-left:20%;
+   cursor: pointer;
+}
+
+.header-container1, .header-container2{
+   margin-right:56%;
+   cursor: pointer;
+
+}
+
+#SetCodeForm h2, #WorkStudyForm h2, #ScheduleForm h2{
+ color:#A5494D;
+ text-align:center;
+ font-weight:bold;
+}
+
+#BookInfoDisplayCheckOut, #BookInfoDisplayCheckIn{
+    width:20%;
+    text-align: center;
+    margin-top: 20px;
+    margin-left:40%;
+    padding: 20px;
+    background-color: #ddd;
+    border: 1px solid #A5494D;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#BookInfoDisplayCheckOut p, #BookInfoDisplayCheckIn p {
+    margin: 10px 0;
+}
+
+#BookInfoDisplayCheckOut strong, #BookInfoDisplayCheckIn strong{
+    font-weight: bold;
+    margin-right: 5px;
+}
+    </style>
 </head>
 <body>
 <div id="navbar">
@@ -28,18 +512,18 @@
         Check Out</a>
       <a href="#" id="BookManagement_txt" onclick="toggleBookManagement()">
       <i class="fa-solid fa-book"></i>
-      Book Management</a>
+      Book Services</a>
       <a href="#" id="WorkStudy_txt" onclick="toggleWorkStudy()">
       <i class="fa-solid fa-users"></i>
       Work Study</a>
-      <a href="https://warrenlibraryseminarroom.simplybook.me/v2/" style="text-decoration:none">
+      <a href="https://warrenlibraryseminarroom.simplybook.me/v2/"  target="_blank" style="text-decoration:none">
       <i class="fa-solid fa-house"></i>
       Booking Room</a>
-      <a href="https://invence.ashesi.local:9192/user" style="text-decoration:none">
+      <a href="https://invence.ashesi.local:9192/user"  target="_blank" style="text-decoration:none">
       <i class="fa-solid fa-print"></i>
       Web Print
     </a>
-      <a href="booktracking.html" id="Notifications_txt">
+      <a href="booktracking.html" id="Notifications_txt"  target="_blank">
     <i class="fa-solid fa-circle-exclamation"></i>
     Book tracking
 </a>
@@ -185,10 +669,8 @@
             <div class="header-container2">
                 <h2 style="color:#A5494D; font-size:20px" onclick="goBookManagement()"><u>Go Back</u></h2>
             </div>
-</div>
-
+        </div>
     </div>
-    <!-- Need a back button to go to previous page-->
 </div>
 
 <!-- Work Study -->
@@ -247,8 +729,9 @@
         </div>
 
         <div class="icon-container">
-        <i class="fa-solid fa-backward" style="color:#A5494D; font-size:60px" onclick="goBack()"></i>
+        <i class="fa-solid fa-backward" style="color:#A5494D; font-size:40px" onclick="goBack()"></i>
         </div>
+
 
     </div>
 
@@ -378,8 +861,211 @@
         </form>
     </div>
 
+<!-- JavaScript code-->
+<script>
+// librarian.js
+// Set the initial active menu item
+let prevActiveItemID = 'ProfileViewing';
+let prevActiveTextID = 'Profile_txt';
+document.getElementById(prevActiveTextID).style.color = "#A5494D";
 
 
-<script src="librarian.js"></script>
+function toggleMenu(contentID, clickedElement) {
+    var activeItem = document.getElementById(contentID);
+    var clickedText = document.getElementById(clickedElement);
+
+    if (prevActiveItemID) {
+        document.getElementById(prevActiveItemID).style.display = "none";
+        document.getElementById(prevActiveTextID).style.color = "black";
+    }
+
+    activeItem.style.display = (activeItem.style.display === 'none' || activeItem.style.display === '') ? 'block' : 'none';
+
+    if (activeItem.style.display === 'block') {
+        clickedText.style.color = '#A5494D';
+    }
+
+    prevActiveItemID = contentID;
+    prevActiveTextID = clickedElement;
+}
+
+function toggleViewProfile() {
+    toggleMenu('ProfileViewing', 'Profile_txt');
+}
+
+function toggleBookManagement() {
+    toggleMenu('BookManagement', 'BookManagement_txt');
+}
+
+function toggleCheckIn() {
+    toggleMenu('CheckIn', 'CheckIn_txt');
+}
+
+function toggleCheckOut() {
+    toggleMenu('CheckOut', 'CheckOut_txt');
+}
+
+function toggleWorkStudy() {
+    toggleMenu('WorkStudy', 'WorkStudy_txt');
+}
+
+function EnterBookInfo() {
+    document.getElementById("card").style.display = "none";
+    document.getElementById("card1").style.display = "none";
+    document.getElementById("formContainer").style.display = "block";
+}
+
+function CancelBookInfo(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById("card").style.display = "block";
+    document.getElementById("card1").style.display = "block";
+    document.getElementById("formContainer").style.display = "none";
+}
+
+function Schedule(){
+    document.getElementById("card2").style.display = "none";
+    document.getElementById("card3").style.display = "none";
+    document.getElementById("ScheduleManagement").style.display = "block";
+}
+
+function StudentInfo(){
+    document.getElementById("card2").style.display = "none";
+    document.getElementById("card3").style.display = "none";
+    document.getElementById("formContainer1").style.display = "block";
+}
+
+function Action(event){
+    event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById("card2").style.display = "block";
+    document.getElementById("card3").style.display = "block";
+    document.getElementById("formContainer1").style.display = "none";
+}
+
+function EditSchedule() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("ScheduleEditing").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+}
+
+function PreviousPage(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("ScheduleEditing").style.display = "none";
+    document.querySelector(".icon-container").style.display="block";
+}
+
+function BookSearch() {
+    document.getElementById("card").style.display = "none";
+    document.getElementById("card1").style.display = "none";
+    document.getElementById("BookEditor").style.display = "block";
+}
+
+function goBookManagement() {
+     document.getElementById("card").style.display = "block";
+    document.getElementById("card1").style.display = "block";
+    document.getElementById("BookEditor").style.display = "none";
+}
+
+
+
+function EditProfile(){
+    var inputs = document.querySelectorAll('.editable[disabled]');
+      // Loop through each input and enable it
+      inputs.forEach(function(input) {
+        input.removeAttribute('disabled');
+        input.style.border = '1px solid #A5494D'; // Set border style using JavaScript
+      });
+
+    document.getElementById("EditProfile").style.display = "none";
+    document.getElementById("SaveProfile").style.display = "inline-block";
+    document.getElementById("Cancel").style.display = "inline-block";
+
+}
+
+function Cancel(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById("EditProfile").style.display = "block";
+    document.getElementById("SaveProfile").style.display = "none";
+    document.getElementById("Cancel").style.display = "none";
+
+    var inputs = document.querySelectorAll('.editable:not([disabled])');
+      inputs.forEach(function(input) {
+        input.setAttribute('disabled', 'disabled');
+        input.style.border = '0';
+      });
+}
+
+function goBack() {
+    document.getElementById("card2").style.display = "flex";
+    document.getElementById("card3").style.display = "flex";
+    document.getElementById("ScheduleManagement").style.display = "none";
+}
+
+function ViewSchedule() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("ViewSchedule").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+
+}
+
+function Attendance() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("PastAttendance").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+}
+
+
+function goScheduleManagement() {
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("ViewSchedule").style.display = "none";
+    document.querySelector(".header-container").style.display="block";
+    document.querySelector(".icon-container").style.display="block";
+}
+
+function goScheduleManagement1() {
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("PastAttendance").style.display = "none";
+    document.querySelector(".header-container1").style.display="block";
+    document.querySelector(".icon-container").style.display="block";
+}
+
+function AttendanceCode() {
+    document.getElementById("card4").style.display = "none";
+    document.getElementById("card5").style.display = "none";
+    document.getElementById("card6").style.display = "none";
+    document.getElementById("card7").style.display = "none";
+    document.getElementById("SetCode").style.display = "block";
+    document.querySelector(".icon-container").style.display="none";
+}
+
+function GoPrevious(event){
+    event.preventDefault(); // Prevent the default form submission behavior
+    document.getElementById("card4").style.display = "inline-block";
+    document.getElementById("card5").style.display = "inline-block";
+    document.getElementById("card6").style.display = "inline-block";
+    document.getElementById("card7").style.display = "inline-block";
+    document.getElementById("SetCode").style.display = "none";
+    document.querySelector(".icon-container").style.display="block";
+}
+
+</script>
 </body>
 </html>
